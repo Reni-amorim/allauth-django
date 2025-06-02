@@ -1,0 +1,510 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Agendamento de Tatuagem</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <h1>Tattoo<span>Scheduler</span></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Início</a></li>
+                    <li><a href="#artists">Artistas</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#sys_schedule">Agendar</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <a href="http://localhost:8000/accounts/login" class="btn btn-login">Entrar</a>
+                <a href="#sys_schedule" class="btn btn-primary">Agendar Consulta</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Agende sua tatuagem de forma fácil e rápida</h2>
+                    <p>Escolha o artista, data e horário que melhor se adequam a você</p>
+                    <a href="#schedule" class="btn btn-primary btn-large">Agendar Agora</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artists Presentation Section (NOVA SEÇÃO) -->
+        <section id="artists" class="artists-section">
+            <div class="container">
+                <h2 class="section-title">Nossos Artistas</h2>
+                <p class="section-description">Conheça os profissionais por trás das artes que transformam vidas</p>
+                
+                <div class="artists-grid">
+                    <!-- Artista 1 -->
+                    <div class="artist-profile">
+                        <div class="artist-image">
+                            <img src="{% static 'assets/img/sys_schedule/artista-profile-1.jpg' %}" alt="Carlos Silva - Especialista em Realismo">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Carlos Silva</h3>
+                            <h4>Especialista em Realismo</h4>
+                            <p>Com mais de 10 anos de experiência, Carlos transformou sua paixão por desenho em uma carreira de sucesso na arte da tatuagem. Especializado em tatuagens realistas, seu trabalho é conhecido pela riqueza de detalhes e pela capacidade de capturar expressões e texturas com precisão impressionante.</p>
+                            <div class="artist-actions">
+                                <a href="#carlos-gallery" class="btn btn-secondary">Ver Trabalhos</a>
+                                <a href="#sys_schedule" class="btn btn-primary">Agendar Sessão</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artista 2 -->
+                    <div class="artist-profile">
+                        <div class="artist-image">
+                            <img src="{% static 'assets/img/sys_schedule/artista-profile-2.jpg' %}" alt="Ana Santos - Especialista em Old School">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Ana Santos</h3>
+                            <h4>Especialista em Old School</h4>
+                            <p>Ana é apaixonada pelo estilo Old School e suas raízes tradicionais. Suas tatuagens são caracterizadas por contornos fortes, cores vibrantes e temas clássicos. Com um estilo único que combina referências vintage com toques contemporâneos, ela cria peças que resistem ao teste do tempo.</p>
+                            <div class="artist-actions">
+                                <a href="#ana-gallery" class="btn btn-secondary">Ver Trabalhos</a>
+                                <a href="#sys_schedule" class="btn btn-primary">Agendar Sessão</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artista 3 -->
+                    <div class="artist-profile">
+                        <div class="artist-image">
+                            <img src="{% static 'assets/img/sys_schedule/artista-profile-3.jpg' %}" alt="Roberto Pereira - Especialista em Geométrico">
+                        </div>
+                        <div class="artist-info">
+                            <h3>Roberto Pereira</h3>
+                            <h4>Especialista em Geométrico</h4>
+                            <p>Roberto é mestre em tatuagens geométricas e dotwork. Seu trabalho mescla precisão matemática com expressão artística, criando padrões hipnotizantes e mandalas detalhadas. Formado em design gráfico, ele traz uma perspectiva única para cada projeto, combinando técnicas tradicionais com inovação.</p>
+                            <div class="artist-actions">
+                                <a href="#roberto-gallery" class="btn btn-secondary">Ver Trabalhos</a>
+                                <a href="#sys_schedule" class="btn btn-primary">Agendar Sessão</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <h2 class="section-title">Galeria de Trabalhos</h2>
+                <p class="section-description">Explore os estilos e técnicas de nossos artistas</p>
+
+                <!-- Galeria do Artista 1 -->
+                <div id="carlos-gallery" class="artist-gallery">
+                    <h3 class="gallery-artist-name">Trabalhos de Carlos Silva</h3>                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-1(1).jpg' %}" alt="Pantera Tradicional">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Pantera Tradicional</h3>
+                                        <p>Coxa • 4 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="animal">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-1(2).jpg' %}" alt="Leão Realista">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Leão Realista</h3>
+                                        <p>Costas • 8 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="portrait">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-1(3).jpg' %}" alt="Retrato Feminino">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Retrato Feminino</h3>
+                                        <p>Perna • 7 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="nature">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-1(4).jpg' %}" alt="Paisagem Montanhosa">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Paisagem Montanhosa</h3>
+                                        <p>Antebraço • 5 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Galeria do Artista 2 -->
+                <div id="ana-gallery" class="artist-gallery">
+                    <h3 class="gallery-artist-name">Trabalhos de Ana Santos</h3>                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item" data-category="traditional">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-2(1).jpg' %}" alt="Águia Tradicional">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Águia Tradicional</h3>
+                                        <p>Braço • 3 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="nautical">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-2(2).jpg' %}" alt="Âncora Old School">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Âncora Old School</h3>
+                                        <p>Antebraço • 2 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="traditional">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-2(3).jpg' %}" alt="Pantera Tradicional">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Pantera Tradicional</h3>
+                                        <p>Coxa • 4 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="floral">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-2(4).jpg' %}" alt="Rosa Tradicional">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Rosa Tradicional</h3>
+                                        <p>Ombro • 2 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Galeria do Artista 3 -->
+                <div id="roberto-gallery" class="artist-gallery">
+                    <h3 class="gallery-artist-name">Trabalhos de Roberto Pereira</h3>                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item" data-category="mandala">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-3(1).jpg' %}" alt="Mandala Complexa">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Mandala Complexa</h3>
+                                        <p>Costas • 8 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="sacred">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-3(2).jpg' %}" alt="Flor da Vida">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Flor da Vida</h3>
+                                        <p>Antebraço • 5 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="dotwork">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-3(3).jpg' %}" alt="Lobo Dotwork">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Lobo Dotwork</h3>
+                                        <p>Ombro • 7 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="mandala">
+                            <div class="image-container">
+                                <img src="{% static 'assets/img/sys_schedule/artista-3(4).jpg' %}" alt="Mandala Braço">
+                                <div class="overlay">
+                                    <div class="icon-container">
+                                        <div class="plus-icon">+</div>
+                                    </div>
+                                    <div class="info-container">
+                                        <h3>Mandala Braço</h3>
+                                        <p>Braço • 6 horas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modal para visualização ampliada -->
+                <div class="gallery-modal">
+                    <span class="modal-close">&times;</span>
+                    <img class="modal-content" id="modal-img">
+                    <div class="modal-caption"></div>
+                </div>
+            </div>    
+        </section>
+        <!-- Schedule Section (já implementado, não alterado) -->
+        <section id="schedule" class="schedule-section">
+            <div class="container">
+                <h2 class="section-title">Agende sua sessão</h2>
+                
+                <div class="schedule-container">
+                    <div class="booking-steps">
+                        <div class="step active">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Escolha o Artista</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Selecione a Data</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Confirme Detalhes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-content">
+                        <!-- Step 1: Artist Selection -->
+                        <div class="booking-step-content active" id="step1">
+                            <h3>Escolha um Artista</h3>
+                            <div class="artists-grid">
+                                <div class="artist-card">
+                                    <div class="artist-image">
+                                        <img src="{% static 'assets/img/sys_schedule/artista-profile-1.jpg' %}" alt="Artista 1">
+                                    </div>
+                                    <h4>Carlos Silva</h4>
+                                    <p>Especialista em Realismo</p>
+                                    <a href="#" class="btn btn-select">Selecionar</a>
+                                </div>
+                                <div class="artist-card">
+                                    <div class="artist-image">
+                                        <img src="{% static 'assets/img/sys_schedule/artista-profile-2.jpg' %}" alt="Artista 2">
+                                    </div>
+                                    <h4>Ana Santos</h4>
+                                    <p>Especialista em Old School</p>
+                                    <a href="#" class="btn btn-select">Selecionar</a>
+                                </div>
+                                <div class="artist-card">
+                                    <div class="artist-image">
+                                        <img src="{% static 'assets/img/sys_schedule/artista-profile-3.jpg' %}" alt="Artista 3">
+                                    </div>
+                                    <h4>Roberto Pereira</h4>
+                                    <p>Especialista em Geométrico</p>
+                                    <a href="#" class="btn btn-select">Selecionar</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Date Selection (initially hidden) -->
+                        <div class="booking-step-content" id="step2">
+                            <h3>Selecione uma Data e Horário</h3>
+                            <div class="calendar-container">
+                                <div class="calendar-header">
+                                    <button id="prev-month">&lt;</button>
+                                    <h4 id="current-month">Maio 2025</h4>
+                                    <button id="next-month">&gt;</button>
+                                </div>
+                                <div class="calendar-grid">
+                                    <!-- Calendar will be generated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <div class="time-slots">
+                                <h4>Horários Disponíveis</h4>
+                                <div class="time-slots-grid">
+                                    <button class="time-slot">09:00</button>
+                                    <button class="time-slot">10:00</button>
+                                    <button class="time-slot">11:00</button>
+                                    <button class="time-slot">14:00</button>
+                                    <button class="time-slot">15:00</button>
+                                    <button class="time-slot">16:00</button>
+                                </div>
+                            </div>
+                            
+                            <div class="schedule-navigation">
+                                <button class="btn btn-back">Voltar</button>
+                                <button class="btn btn-primary btn-next">Continuar</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Confirmation (initially hidden) -->
+                        <div class="booking-step-content" id="step3">
+                            <h3>Confirme seus Detalhes</h3>
+                            <div class="schedule-summary">
+                                <div class="summary-item">
+                                    <strong>Artista:</strong> <span id="summary-artist">Carlos Silva</span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Data:</strong> <span id="summary-date">22 de Maio, 2025</span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Horário:</strong> <span id="summary-time">14:00</span>
+                                </div>
+                            </div>
+                            
+                            <form class="booking-form">
+                                <div class="form-group">
+                                    <label for="name">Nome Completo</label>
+                                    <input type="text" id="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" id="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Telefone</label>
+                                    <input type="tel" id="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Descrição da Tatuagem</label>
+                                    <textarea id="description" rows="4"></textarea>
+                                </div>
+                                <div class="form-group checkbox">
+                                    <input type="checkbox" id="reminder">
+                                    <label for="reminder">Desejo receber um lembrete por e-mail 1 dia antes do agendamento</label>
+                                </div>
+                                
+                                <div class="schedule-navigation">
+                                    <button type="button" class="btn btn-back">Voltar</button>
+                                    <button type="submit" class="btn btn-primary">Solicitar Agendamento</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="section-title">O que nossos clientes dizem</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Processo super fácil de agendamento. Amei a experiência e o resultado da minha tatuagem!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="{% static 'assets/img/sys_schedule/polina.jpg' %}" alt="Cliente">
+                            <div>
+                                <h4>Mariana Costa</h4>
+                                <p>Cliente desde 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"O sistema de agendamento é muito prático. Consegui marcar minha sessão em minutos!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="{% static 'assets/img/sys_schedule/polina.jpg' %}" alt="Cliente">
+                            <div>
+                                <h4>Lucas Oliveira</h4>
+                                <p>Cliente desde 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Tattoo<span>Scheduler</span></h3>
+                    <p>Sistema de agendamento de tatuagens para profissionais e estúdios.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#artists">Artistas</a></li>
+                        <li><a href="#gallery">Galeria</a></li>
+                        <li><a href="#sys_schedule">Agendar</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>Rua Exemplo, 123 - Batatais</p>
+                    <p>contato@tattooscheduler.com</p>
+                    <p>(16) 99999-9999</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TattooScheduler. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="whatsapp-button">
+        <a href="https://wa.me/5511999999999" target="_blank" aria-label="Fale conosco no WhatsApp">
+            <img src="{% static 'assets/img/sys_schedule/whatsApp.png' %}" alt="WhatsApp" />
+        </a>
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/gallery.js' %}"></script>
+</body>
+</html>

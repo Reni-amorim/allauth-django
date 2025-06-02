@@ -1,0 +1,224 @@
+/* Variables */
+:root {
+    --primary: #8c271e;         
+    --primary-light: #a6352a;   
+    --primary-dark: #751c17;    
+    --secondary: #77878b;       
+    --light: #ffffff;           
+    --dark: #0b0500;            
+    --gray: #95969d;            
+    --light-gray: #f5f5f7;      
+    --border: #d5d6dd;          
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--dark);
+    line-height: 1.6;
+    background: linear-gradient(135deg, var(--light-gray) 0%, #e8e9ef 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Login Container */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+.login-card {
+    background: var(--light);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+}
+
+/* Logo Section */
+.logo {
+    margin-bottom: 40px;
+}
+
+.logo h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.logo p {
+    color: var(--gray);
+    font-size: 1rem;
+}
+
+/* Login Content */
+.login-content h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--gray);
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+/* Google Button */
+.google-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: var(--light);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.google-btn:hover {
+    background: var(--light-gray);
+    border-color: var(--gray);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.google-btn:active {
+    transform: translateY(0);
+}
+
+.google-icon {
+    flex-shrink: 0;
+}
+
+/* Terms */
+.terms {
+    margin-top: 20px;
+}
+
+.terms p {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.5;
+}
+
+.terms a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.terms a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Back to Home */
+.back-home {
+    margin-top: 30px;
+}
+
+.back-home a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.back-home a:hover {
+    color: var(--primary);
+}
+
+.back-home svg {
+    transition: transform 0.3s ease;
+}
+
+.back-home a:hover svg {
+    transform: translateX(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 25px;
+        border-radius: 15px;
+    }
+    
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .login-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .google-btn {
+        padding: 14px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Loading Animation for Future Use */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--border);
+    border-radius: 50%;
+    border-top-color: var(--primary);
+    animation: spin 1s ease-in-out infinite;
+}
+
+/* Hover Effects */
+.login-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}

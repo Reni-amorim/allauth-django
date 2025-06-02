@@ -1,0 +1,971 @@
+/****** Variables ******/
+:root {
+    --primary-red: #8c271e;         /* burnt-umber - primary brand color */
+    --primary-red-light: #a6352a;   /* lighter version of burnt-umber */
+    --primary-red-dark: #751c17;    /* darker version of burnt-umber */
+    --secondary: #77878b;       /* slate-gray - secondary color */
+    --light: #ffffff;           /* white */
+    --dark: #0b0500;            /* smoky-black */
+    --gray: #95969d;            /* taupe-gray */
+    --light-gray: #f5f5f7;      /* lighter version of taupe-gray */
+    --border: #d5d6dd;          /* lighter version of taupe-gray for borders */
+    --success: #4d6e70;         /* darker version of slate-gray for success */
+    --danger: #8c271e;          /* burnt-umber reused for danger */
+    --warning: #c97d6f;         /* lighter burnt-umber for warnings */
+    --info: #77878b;            /* slate-gray reused for info */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--dark);
+    line-height: 1.6;
+    background-color: var(--light-gray);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-red);
+    color: var(--light);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-red-dark);
+}
+
+.btn-login {
+    background-color: transparent;
+    color: var(--dark);
+    border: 1px solid var(--border);
+}
+
+.btn-login:hover {
+    background-color: var(--light-gray);
+}
+
+.btn-large {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+}
+
+.btn-select {
+    width: 100%;
+    background-color: var(--light);
+    color: var(--primary-red);
+    border: 1px solid var(--primary-red);
+}
+
+.btn-select:hover {
+    background-color: var(--primary-red);
+    color: var(--light);
+}
+
+.btn-back {
+    background-color: var(--light);
+    color: var(--dark);
+    border: 1px solid var(--border);
+}
+
+.btn-back:hover {
+    background-color: var(--light-gray);
+}
+
+/* Header */
+.site-header {
+    background-color: var(--light);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 15px 0;
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--primary-red);
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+.main-nav a {
+    padding: 5px;
+    font-weight: 500;
+    position: relative;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-red);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.user-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(11, 5, 0, 0.7), rgba(11, 5, 0, 0.7)), url("../img/hero-bg-schedule.jpg") no-repeat center center/cover;
+    color: var(--light);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Section Styles */
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-red);
+}
+
+/* Schedule Section */
+.schedule-section {
+    background-color: var(--light);
+}
+
+.schedule-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.booking-steps {
+    display: flex;
+    background-color: var(--light-gray);
+    border-bottom: 1px solid var(--border);
+}
+
+.step {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.step.active {
+    opacity: 1;
+    font-weight: 600;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--primary-red);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.booking-step-content {
+    padding: 30px;
+    display: none;
+}
+
+.booking-step-content.active {
+    display: block;
+}
+
+.booking-step-content h3 {
+    margin-bottom: 20px;
+    color: var(--primary-red);
+}
+
+.booking-step-content .artists-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    flex-direction: unset;
+}
+
+.booking-step-content .artist-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.booking-step-content .artist-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.booking-step-content .artist-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Artist Selection */
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.artist-card {
+    background-color: var(--light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.artist-card:hover {
+    transform: translateY(-5px);
+}
+
+.artist-image {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.artist-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.artist-card h4 {
+    margin: 15px 0 5px;
+}
+
+.artist-card p {
+    color: var(--gray);
+    margin-bottom: 15px;
+}
+
+/* Calendar Styles */
+.calendar-container {
+    margin-bottom: 30px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+/* Time Slots */
+.time-slots {
+    margin-bottom: 30px;
+}
+
+.time-slots h4 {
+    margin-bottom: 15px;
+}
+
+.time-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+}
+
+.time-slot {
+    padding: 10px;
+    background-color: var(--light-gray);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.time-slot:hover, .time-slot.selected {
+    background-color: var(--primary-red);
+    color: var(--light);
+    border-color: var(--primary-red);
+}
+
+/* Schedule Summary & Form */
+.schedule-summary {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    margin-bottom: 10px;
+}
+
+.booking-form .form-group {
+    margin-bottom: 20px;
+}
+
+.booking-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.booking-form input, 
+.booking-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.booking-form .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.booking-form .checkbox input {
+    width: auto;
+}
+
+.schedule-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+/* Adicionando os estilos para as novas seções */
+/* Seção de Artistas */
+.artists-section {
+    background-color: var(--light);
+    padding: 80px 0;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 800px;
+    margin: -30px auto 50px;
+    color: var(--gray);
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.artist-profile {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.artist-profile:hover {
+    transform: translateY(-10px);
+}
+
+.artist-image {
+    height: 300px;
+    overflow: hidden;
+}
+
+.artist-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.artist-profile:hover .artist-image img {
+    transform: scale(1.05);
+}
+
+.artist-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.artist-info h3 {
+    font-size: 1.8rem;
+    color: var(--primary-red);
+    margin-bottom: 5px;
+}
+
+.artist-info h4 {
+    font-size: 1.2rem;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.artist-info p {
+    margin-bottom: 25px;
+    line-height: 1.7;
+    flex-grow: 1;
+}
+
+.artist-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-secondary {
+    background-color: var(--light);
+    color: var(--dark);
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--light-gray);
+    border-color: var(--gray);
+}
+
+/* Seção de Galeria */
+.gallery-section {
+    background-color: var(--light-gray);
+    padding: 80px 0;
+}
+
+.artist-gallery {
+    margin-bottom: 80px;
+}
+
+.artist-gallery:last-child {
+    margin-bottom: 0;
+}
+
+.gallery-artist-name {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--primary-red);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 1/1;
+    transition: transform 0.3s ease;
+    background-color: var(--light);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilo para o container da imagem */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Estilo para a imagem */
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito hover na imagem */
+.image-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Container dedicado para centralizar o ícone + */
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* Garante visibilidade */
+}
+
+/* Estilo para o overlay que aparecerá no hover */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 5, 0, 0.7);
+    opacity: 0;
+    display: flex; /* Ativa flexbox */
+    flex-direction: column; /* Centraliza itens no eixo vertical */
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    transition: opacity 0.3s ease;
+}
+
+/* Ícone + centralizado */
+.plus-icon {
+    width: 40px;
+    height: 40px;
+    color: var(--light);
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    z-index: 3; /* Fica acima do overlay */
+}
+
+/* DEBUG */
+
+
+
+/* Efeito hover no ícone + Debug
+.image-container:hover .plus-icon {
+    transform: rotate(90deg);
+}
+*/
+/* Container dedicado para as informações de texto */
+.info-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    color: white;
+}
+
+.info-container h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+}
+
+.info-container p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Efeito hover no overlay */
+.image-container:hover .overlay {
+    opacity: 1;
+}
+
+/* Textos no overlay */
+.overlay h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 2; /* Maior que o ícone para garantir visibilidade */
+}
+
+.overlay p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    position: relative;
+    z-index: 2; /* Maior que o ícone para garantir visibilidade */
+}
+
+/* Modal de Galeria */
+.gallery-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 80vh;
+    margin-top: 5vh;
+}
+
+.modal-caption {
+    margin: auto;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: auto;
+}
+
+/* Animações para os itens da galeria */
+.gallery-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.gallery-item.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*    - Testimonials */
+.testimonials {
+    background-color: var(--light-gray);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-card {
+    background-color: var(--light);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-content {
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.testimonial-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.testimonial-author h4 {
+    margin-bottom: 5px;
+}
+
+.testimonial-author p {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--dark);
+    color: var(--light);
+    padding: 50px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-about span {
+    color: var(--primary-red);
+}
+
+.footer-about p {
+    margin-top: 15px;
+    opacity: 0.8;
+}
+
+.footer-links h4, 
+.footer-contact h4 {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.footer-links h4::after, 
+.footer-contact h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-red);
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.footer-contact p {
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px; /* Distância da parte inferior da página */
+  right: 20px; /* Distância do lado direito da página */
+  z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+/* Whatsapp button */
+.whatsapp-button a {
+  display: flex; /* Habilita o Flexbox */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  width: 60px; /* Largura do botão */
+  height: 60px; /* Altura do botão */
+  background-color: #25d366; /* Cor de fundo */
+  border-radius: 50%; /* Forma circular */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Animação no hover */
+}
+
+.whatsapp-button a:hover {
+  transform: scale(1.1); /* Aumenta o botão ao passar o mouse */
+}
+
+.whatsapp-button img {
+  width: 30px; /* Ajusta o tamanho do ícone */
+  height: auto; /* Mantém proporção */
+}
+
+/* Responsividade para novas seções */
+@media (max-width: 992px) {
+    .artist-profile {
+        grid-template-columns: 1fr;
+    }
+    
+    .artist-image {
+        height: 300px;
+    }
+    
+    .booking-step-content .artists-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    artists-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .site-header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .booking-steps {
+        flex-direction: column;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .schedule-navigation {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .schedule-navigation button {
+        width: 100%;
+    }
+        .artist-profile {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .booking-step-content .artists-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 576px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-content h2, 
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .modal-content {
+        max-width: 95%;
+    }
+    
+    .booking-step-content .artists-grid {
+        grid-template-columns: 1fr;
+    }
+    .artists-grid {
+        grid-template-columns: 1fr;
+    }
+}
